@@ -50,7 +50,7 @@ namespace Vial.Extensions
     public static IReadOnlyList<T> Values => __values;
 
     /// <summary> An descending list of the enum values ordered by value. Duplicates removed. </summary>
-    public static readonly IReadOnlyList<T> ValuesDescending = __values.Reverse<T>().ToArray();
+    public static readonly IReadOnlyList<T> ValuesDescending = Values.Reverse().ToArray();
 
 
     private static readonly List<string> __namesAscending = Enum.GetNames( typeof( T ) ).OrderBy( s => s ).ToList();
