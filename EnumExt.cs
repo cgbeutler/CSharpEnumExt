@@ -43,7 +43,7 @@ namespace Vial.Extensions
     public static readonly bool HasFlagsAttribute = typeof( T ).GetCustomAttributes( typeof( FlagsAttribute ), false ).Length > 0;
 
     /// <summary> The enum-cast version of zero. Does not have to be defined explicitly by the enum. </summary>
-    public static T Zero = Expression.Lambda<Func<T>>( Expression.Convert( Expression.Constant( (byte)0, UnderlyingType ), Type ) ).Compile().Invoke();
+    public static T Zero = Expression.Lambda<Func<T>>( Expression.Convert( Expression.Constant( (byte)0, typeof(byte) ), Type ) ).Compile().Invoke();
 
     private static readonly List<T> __values = Enum.GetValues( typeof( T ) ).Cast<T>().Distinct().OrderBy( v => v ).ToList();
     /// <summary> An ascending list of the enum values ordered by value. Duplicates removed. </summary>
