@@ -31,23 +31,26 @@ string eDescription = e.Description();
 There are also a bunch of cached values and sequences for enums. Use `Enum<T>` to access these values and methods. Below are examples of method in the class. See code docs for more details on usage and outputs. In each example `E` would be your custom enum type.
 
 ```csharp
-var zeroValue = Enum<E>.Zero;
-
+// All caches are lazy loaded to save on memory.
 // Scan over every value in ascending order. No duplicates.
 foreach (var e in Enum<E>.Values) { ... }
 // Scan over all values in descending order. No duplicates.
 foreach (var e in Enum<E>.ValuesDescending) { ... }
 
 // Similar caches exist for names.
-// Scan over names in order defined using `OrderByAscending`
+// Scan over names in order defined using `Names`
 foreach (var s in Enum<E>.Names) { ... }
+// Alphabetical caches can also be used.
+foreach (var s in Enum<E>.NamesAscending) { ... }
 foreach (var s in Enum<E>.NamesDescending) { ... }
 
-// Cached values
+// Caches of specific values
 var eMin = Enum<E>.MinDefinedValue;
 var eMax = Enum<E>.MaxDefinedValue;
-// For a all values bitwise-anded together, use:
+// For all values bitwise-anded together, use:
 var _ = Enum<E>.MaxFlagValue;
+// A helpful typed zero is also available for the no-flag case
+var zeroValue = Enum<E>.Zero;
 
 // Get a random defined enum value
 var eRandom = Enum<E>.Random();
